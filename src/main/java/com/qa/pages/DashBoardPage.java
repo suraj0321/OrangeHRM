@@ -51,13 +51,13 @@ public class DashBoardPage extends BasePage {
 	public EmployeePage gotoEmployeePage() {
 		TestUtil.mouseHover(driver, pimTab);
 		addemployeeTab.click();
-		return new EmployeePage();
+		return new EmployeePage(driver);
 	}
 
 	public VacancyPage gotoVacancyPage() {
 		TestUtil.mouseHover(driver, recruitmentTab);
 		vacancyTab.click();
-		return new VacancyPage();
+		return new VacancyPage(driver);
 
 	}
 

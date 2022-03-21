@@ -9,6 +9,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 public class TestUtil {
 	public static final String TESTDATA_SHEET_PATH = "D:\\work\\OrangeHRM\\src\\main\\resources\\testdata\\OrangeHRMTestData.xlsx";
@@ -42,5 +43,9 @@ public class TestUtil {
 			}
 		}
 		return data;
+	}
+	public static void listBoxSelect(WebElement element,String text) {
+		Select select=new Select(element);
+		select.selectByVisibleText(text);
 	}
 }

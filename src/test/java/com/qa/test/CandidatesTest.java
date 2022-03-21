@@ -31,7 +31,7 @@ public class CandidatesTest {
 		driver = basePage.init_driver(browser);
 		driver.get(prop.getProperty("url"));
 		loginPage = new LoginPage(driver);
-		loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+		dashBoard=loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 		candidatesPage=dashBoard.gotoCandidatesPage();
 	}
 	@DataProvider(name="getCandidatesData")

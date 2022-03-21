@@ -13,12 +13,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.aventstack.extentreports.ExtentReports;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BasePage {
 
 	public WebDriver driver;
 	public Properties prop;
+	public ExtentReports reports;
 
 	public WebDriver init_driver(String browserName) {
 		if (browserName.equals("chrome")) {
@@ -33,10 +36,11 @@ public class BasePage {
 	}
 
 	public Properties init_properties() {
-		prop=new Properties();
-		
+		prop = new Properties();
+
 		try {
-			FileInputStream ip=new FileInputStream("D:\\work\\OrangeHRM\\src\\main\\java\\com\\qa\\config\\config.properties");
+			FileInputStream ip = new FileInputStream(
+					"D:\\work\\OrangeHRM\\src\\main\\java\\com\\qa\\config\\config.properties");
 			prop.load(ip);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -46,18 +50,17 @@ public class BasePage {
 		}
 		return prop;
 	}
-		public String getScreenshot() {
-			TakesScreenshot ts=(TakesScreenshot) driver;
-			File src = ts.getScreenshotAs(OutputType.FILE);
-			String path=System.getProperty("user.dir")+"/screenshots/"+System.currentTimeMillis()+".png";
-			File destination=new File(path);
-			try {
-			FileUtils.copyFile(src, destination);
-			}
-			catch(Exception e) {
-				e.printStackTrace();
-			}
-			return path;
-		}
-	}
 
+	public String getScreenshot() {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File src = ts.getScreenshotAs(OutputType.FILE);
+		String path = System.getProperty("user.dir") + "/screenshots/" + System.currentTimeMillis() + ".png";
+		File destination = new File(path);
+		try {
+			FileUtils.copyFile(src, destination);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return path;
+	}
+}
